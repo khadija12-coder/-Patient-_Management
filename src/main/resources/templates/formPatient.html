@@ -1,0 +1,171 @@
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorat="index">
+<head>
+<meta charset="utf-8"/>
+<title>Insert title here</title>
+
+<link  rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.1.3/css/bootstrap.min.css"/>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  
+ <style>
+  
+body {
+  background-image: url('images/o.jpg');
+}
+
+
+</style>
+
+
+</head>
+
+
+
+
+<body >
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+  <!-- Brand -->
+   <a class="navbar-brand" th:href="@{patients}">
+    <img src="images/logo14.png" alt="Logo" style="width:50px">
+  </a>
+
+  <!-- Links -->
+  <ul class="navbar-nav">
+    
+    <li class="nav-item">
+      <a class="nav-link" >Medecins</a>
+    </li>
+
+    <!-- Dropdown -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Patients
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" th:href="@{formPatient}">Ajouter</a>
+        <a class="dropdown-item" th:href="@{patients}">Chercher</a>
+      
+      </div>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+    </li>
+    <!-- Dropdown -->
+    <li class="nav-item dropdown ">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        [username]
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Login</a>
+        <a class="dropdown-item" th:href="@{logout}">Logout</a>
+        <a class="dropdown-item" href="#">Profile</a>
+      
+      </div>
+    </li>
+    
+  </ul>
+</nav>
+
+<div class="container mt-5"  >
+   <div class="row h-100 justify-content-center align-items-center">
+<div class="col-md-6">
+<div class="card ">
+
+<div class="card-header"> Formulaire de saisie d'un nouveau patient</div>
+<div class="card-body"> 
+
+<form  th:action="@{savePatient}" method="post" >
+<div class="form-group">
+<label class="control-label">ID:</label>
+<input type="hidden" name="id" class="form-control" th:value="${patient.id}">
+
+
+
+
+</div>
+<div class="form-group">
+<label class="control-label">Name:</label>
+<input type="text" name="name" class="form-control" th:value="${patient.name}">
+<span th:errors=${patient.name} class="text-danger"> </span>
+
+
+
+</div>
+
+
+<div class="form-group">
+<label class="control-label">Score</label>
+<input type="text" name="score" class="form-control" th:value="${patient.score}">
+<span th:errors=${patient.score} class="text-danger"> </span>
+
+
+</div>
+<div class="form-group">
+<label class="control-label">Date Naissance:</label>
+<input type="date" name="datNaissance" class="form-control" th:value="${patient.datNaissance}">
+<span th:errors=${patient.datNaissance}></span>
+
+
+
+</div>
+
+<div class="form-group">
+<label class="control-label">Malade:</label>
+<input type="checkbox" name="malade" th:checked="${patient.malade}" >
+<span th:errors=${patient.malade}></span>
+
+</div>
+<button class="btn btn-success" type="submit" >Save</button>
+
+
+
+
+
+
+
+</form>
+
+
+
+
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+</div>
+</body>
+
+
+
+
+
+
+
+</html>
